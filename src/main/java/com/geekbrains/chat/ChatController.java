@@ -12,14 +12,13 @@ public class ChatController {
     @FXML
     private TextField messageField;
 
-
     @FXML
     private void checkButtonClick(ActionEvent actionEvent) {
-        final String playerNumber = messageField.getText();
-        if (playerNumber.isEmpty()) {
+        final String userMessage = messageField.getText();
+        if (userMessage.isEmpty()) {
             return;
         }
-        messageArea.appendText(playerNumber + "\n");
+        messageArea.appendText(userMessage + "\n");
         messageField.clear();
         messageField.requestFocus();
     }
