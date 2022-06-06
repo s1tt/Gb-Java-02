@@ -42,22 +42,35 @@
 >1. Необходимо написать два метода, которые делают следующее:  
 >
 >a) Создают одномерный длинный массив, например:
->
->>static final int size = 10000000;  
->>static final int h = size / 2;  
->>float[] arr = new float[size]; 
+
+```Java
+static final int size = 10000000;  
+static final int h = size / 2;  
+float[] arr = new float[size]; 
+```
 >
 >б) Заполняют этот массив единицами;
 >
->в) Засекают время выполнения: long a = System.currentTimeMillis();
+>в) Засекают время выполнения:
+ ```Java 
+ long a = System.currentTimeMillis();
+ ```
 >
 >г) Проходят по всему массиву и для каждой ячейки считают новое значение по формуле:
+
+```Java
+arr[i] = (float)(arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+```
 >
->>arr[i] = (float)(arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+>д) Проверяется время окончания метода 
+```Java 
+System.currentTimeMillis();
+```
 >
->д) Проверяется время окончания метода System.currentTimeMillis();
->
->е) В консоль выводится время работы: System.out.println(System.currentTimeMillis() - a);
+>е) В консоль выводится время работы: 
+```Java 
+System.out.println(System.currentTimeMillis() - a);
+```
 >
 >Отличие первого метода от второго:
 >
@@ -66,27 +79,34 @@
 >Второй разбивает массив на два массива, в двух потоках высчитывает новые значения и потом склеивает эти массивы обратно в один.
 >
 >Пример деления одного массива на два:
->>System.arraycopy(arr, 0, a1, 0, h);
->>System.arraycopy(arr, h, a2, 0, h);
+```Java
+System.arraycopy(arr, 0, a1, 0, h);
+System.arraycopy(arr, h, a2, 0, h);
+
+```
 >
 >Пример обратной склейки:
->
->>System.arraycopy(a1, 0, arr, 0, h);
->>System.arraycopy(a2, 0, arr, h, h);
+
+```Java
+System.arraycopy(a1, 0, arr, 0, h);
+System.arraycopy(a2, 0, arr, h, h);
+```
 >
 >Примечание:
 >
->System.arraycopy() – копирует данные из одного массива в другой:
+>`System.arraycopy()` – копирует данные из одного массива в другой:
 >
->System.arraycopy(массив-источник, откуда начинаем брать данные из массива-источника, массив-назначение, откуда начинаем записывать данные в массив-назначение, сколько ячеек копируем)
+>`System.arraycopy`(массив-источник, откуда начинаем брать данные из массива-источника, массив-назначение, откуда начинаем записывать данные в массив-назначение, сколько ячеек копируем)
 >
 >По замерам времени:
 >
 >Для первого метода надо считать время только на цикл расчета:
->
->>for (int i = 0; i < size; i++) {
->>arr[i] = (float)(arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
->>}
+
+```Java
+for (int i = 0; i < size; i++) {
+arr[i] = (float)(arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+}
+```
 >
 >Для второго метода замеряете время разбивки массива на 2, просчета каждого из двух массивов и склейки.
 >
