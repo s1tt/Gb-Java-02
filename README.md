@@ -40,23 +40,24 @@
 ## [[ Open Lesson 3 solution ]](https://github.com/s1tt/Gb-Java-02/tree/master/src/main/java/com/geekbrains/lesson3)
 # Lesson 5
 >1. Необходимо написать два метода, которые делают следующее:  
+>
 >a) Создают одномерный длинный массив, например:
 >
 >>static final int size = 10000000;  
 >>static final int h = size / 2;  
 >>float[] arr = new float[size]; 
 >
->a) Заполняют этот массив единицами;
+>б) Заполняют этот массив единицами;
 >
->a) Засекают время выполнения: long a = System.currentTimeMillis();
+>в) Засекают время выполнения: long a = System.currentTimeMillis();
 >
->a) Проходят по всему массиву и для каждой ячейки считают новое значение по формуле:
+>г) Проходят по всему массиву и для каждой ячейки считают новое значение по формуле:
 >
 >>arr[i] = (float)(arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
 >
->a) Проверяется время окончания метода System.currentTimeMillis();
+>д) Проверяется время окончания метода System.currentTimeMillis();
 >
->a) В консоль выводится время работы: System.out.println(System.currentTimeMillis() - a);
+>е) В консоль выводится время работы: System.out.println(System.currentTimeMillis() - a);
 >
 >Отличие первого метода от второго:
 >
